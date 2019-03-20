@@ -1,0 +1,15 @@
+﻿<Window x:Class="Restaurant.Waiter.AddMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant.Waiter"
+        mc:Ignorable="d"
+        Title="AddMenu" Height="Auto" Width="800">
+    <Grid>
+        <DataGrid HeadersVisibility = "None" IsReadOnly="True" Name ="DataGridMenu" HorizontalAlignment="Center" Height="Auto" Margin="0,76,0,30" VerticalAlignment="Top" Width="Auto"/>
+        <Label Content="Оберіть бажану страву, двічі натиснувши на неї" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Завершити вибір" HorizontalAlignment="Center" Margin="633,66,32,0" VerticalAlignment="Top" Width="127" Height="37" Click="Button_Click"/>
+
+    </Grid>
+</Window>
