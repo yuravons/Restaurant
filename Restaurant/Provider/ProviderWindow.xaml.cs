@@ -1,0 +1,219 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.Entity.Core;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Restaurant.Provider
+{
+    /// <summary>
+    /// Логика взаимодействия для ProviderWindow.xaml
+    /// </summary>
+    public partial class ProviderWindow : Window
+    {
+        Project_Restaurant1Entities db = new Project_Restaurant1Entities();
+        public ProviderWindow()
+        {
+            InitializeComponent();
+            DateTime date = DateTime.Now.ToLocalTime();
+            var sql = "UPDATE order_ingredients SET status_id = 3 WHERE execute_time < {0}";
+            db.Database.ExecuteSqlCommand(sql, date);
+            ProvidersGrid.ItemsSource = db.providers.ToList();
+            StorageGrid.ItemsSource = GetStorageItems();
+            ordIngrGrid.ItemsSource = GetOrderIngredients();
+        }
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+ 
+        public class StorageItem
+        {
+            public int id { get; set; }
+            public string ingredient_name { get; set; }
+            public int count { get; set; }
+            public string unit_measurement { get; set; }
+        }
+        List<StorageItem> GetStorageItems()
+        {
+            var item = (from storage_item in db.storage_ingredient
+                        join ingredient_item in db.ingredients on storage_item.ingredient_id equals ingredient_item.id
+                        join unit_item in db.units_of_measurement on storage_item.unit_of_measurement_id equals unit_item.id
+                        select new StorageItem
+                        {
+                            id = storage_item.id,
+                            ingredient_name = ingredient_item.name,
+                            count = storage_item.count,
+                            unit_measurement = unit_item.name,
+                        }).Distinct();
+            return item.ToList();
+        }
+        private class OrderIngredientTable
+        {
+            public int id { get; set; }
+            public string provid_name { get; set; }
+            public string ingr_name { get; set; }
+            public int count { get; set; }
+            public string units { get; set; }
+            public int price { get; set; }
+            public string status { get; set; }
+            public DateTime d1 { get; set; }
+            public DateTime d2 { get; set; }
+        }
+        List<OrderIngredientTable> GetOrderIngredients()
+        {
+            var Items = (from cont_item in db.content_order_ingredients
+                         join unit_item in db.units_of_measurement on cont_item.unit_of_measurement_id equals unit_item.id
+                         join ingr_item in db.ingredients on cont_item.ingredient_id equals ingr_item.id
+                         join ord_ing_item in db.order_ingredients on cont_item.order_ingredients_id equals ord_ing_item.id
+                         join status_item in db.statuses on ord_ing_item.status_id equals status_item.id
+                         join provider_item in db.providers on ord_ing_item.provider_id equals provider_item.id
+                         select new OrderIngredientTable
+                         {
+                             id = ord_ing_item.id,
+                             provid_name = provider_item.name,
+                             ingr_name = ingr_item.name,
+                             count = cont_item.count,
+                             units = unit_item.name,
+                             price = cont_item.price,
+                             status = status_item.name,
+                             d1 = ord_ing_item.order_time,
+                             d2 = ord_ing_item.execute_time
+                         }).Distinct();
+            return Items.ToList();
+        }
+        //orderIngredients add
+        private void AddOrderIngr_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrderIngredient orderIngreWindow = new AddOrderIngredient();
+            orderIngreWindow.ShowDialog();
+            ordIngrGrid.ItemsSource = GetOrderIngredients();
+        }
+        //orderIngredients delete
+        private void deleteOrderIngredientsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення замовлення?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (ordIngrGrid.SelectedItem as OrderIngredientTable).id;
+                var deleteOrderIngredient = db.order_ingredients.Where(m => m.id == id).Single();
+                db.order_ingredients.Remove(deleteOrderIngredient);
+                db.SaveChanges();
+                ordIngrGrid.ItemsSource = GetOrderIngredients();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //orderIngredients update
+        private void updateOrderIngredientsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OrderIngredientTable item = (ordIngrGrid.SelectedItem as OrderIngredientTable);
+            order_ingredients item1 = db.order_ingredients.First(c => c.id == item.id);
+            item1.provider_id = db.providers.First(c => c.name == item.provid_name).id;
+            item1.status_id = db.statuses.First(c => c.name == item.status).id;
+            item1.order_time = item.d1;
+            item1.execute_time = item.d2;
+            content_order_ingredients item2 = db.content_order_ingredients.First(c => c.order_ingredients_id == item.id);
+            item2.ingredient_id = db.ingredients.First(c => c.name == item.ingr_name).id;
+            db.content_order_ingredients.First(c => c.ingredient_id == item2.ingredient_id).count = item.count;
+            item2.unit_of_measurement_id = db.units_of_measurement.First(c => c.name == item.units).id;
+            item2.price = item.price;
+            db.SaveChanges();
+            ordIngrGrid.ItemsSource = GetOrderIngredients();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+
+        //storage add
+        private void AddStorageItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddStorageItem storageWindow = new AddStorageItem();
+            storageWindow.ShowDialog();
+            StorageGrid.ItemsSource = GetStorageItems();
+        }
+        //storage delete
+        private void deleteStorageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення товару?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (StorageGrid.SelectedItem as StorageItem).id;
+                var deleteStorage = db.storage_ingredient.Where(m => m.id == id).Single();
+                db.storage_ingredient.Remove(deleteStorage);
+                db.SaveChanges();
+                StorageGrid.ItemsSource = GetStorageItems();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //storage update
+        private void updateStorageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StorageItem itemStorage = (StorageGrid.SelectedItem as StorageItem);
+            storage_ingredient stItem = db.storage_ingredient.First(c => c.id == itemStorage.id);
+            stItem.ingredient_id = db.ingredients.First(c => c.name == itemStorage.ingredient_name).id;
+            stItem.unit_of_measurement_id = db.units_of_measurement.First(c => c.name == itemStorage.unit_measurement).id;
+            stItem.count = itemStorage.count;
+            db.SaveChanges();
+            StorageGrid.ItemsSource = GetStorageItems();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+
+        //provider add
+        private void AddProviderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddProvider providerWindow = new AddProvider();
+            providerWindow.ShowDialog();
+            ProvidersGrid.ItemsSource = db.providers.ToList();
+        }
+        //provider delete
+        private void deleteProviderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення постачальника?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (ProvidersGrid.SelectedItem as providers).id;
+                var deleteProvider = db.providers.Where(m => m.id == id).Single();
+                db.providers.Remove(deleteProvider);
+                db.SaveChanges();
+                ProvidersGrid.ItemsSource = db.providers.ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //provider update
+        private void updateProviderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            providers provider = (ProvidersGrid.SelectedItem as providers);
+            providers thisProvider = db.getProviderInfo(provider.id).Single();
+            thisProvider.name = provider.name;
+            db.SaveChanges();
+            ProvidersGrid.ItemsSource = db.providers.ToList();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+    }
+}

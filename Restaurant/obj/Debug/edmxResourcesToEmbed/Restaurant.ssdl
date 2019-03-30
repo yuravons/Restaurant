@@ -387,6 +387,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="getPlatenInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="platenId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getProviderInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="providerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getStatusInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="statusId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getTypeDishInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="typedishId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getWaiterInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="waiterId" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Хранилище Project_Restaurant1ModelContainer">
     <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="content_order_ingredients" EntityType="Self.content_order_ingredients" Schema="dbo" store:Type="Tables" />

@@ -165,5 +165,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getWaiterInfo" FunctionName="Хранилище Project_Restaurant1Model.getWaiterInfo" />
+    <FunctionImportMapping FunctionImportName="getStatusInfo" FunctionName="Хранилище Project_Restaurant1Model.getStatusInfo" />
+    <FunctionImportMapping FunctionImportName="getTypeDishInfo" FunctionName="Хранилище Project_Restaurant1Model.getTypeDishInfo" />
+    <FunctionImportMapping FunctionImportName="getProviderInfo" FunctionName="Хранилище Project_Restaurant1Model.getProviderInfo" />
+    <FunctionImportMapping FunctionImportName="getPlatenInfo" FunctionName="Хранилище Project_Restaurant1Model.getPlatenInfo" />
   </EntityContainerMapping>
 </Mapping>

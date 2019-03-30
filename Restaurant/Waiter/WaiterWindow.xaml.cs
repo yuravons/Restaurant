@@ -1,0 +1,236 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Restaurant.Waiter
+{
+    /// <summary>
+    /// Логика взаимодействия для WaiterWindow.xaml
+    /// </summary>
+    public partial class WaiterWindow : Window
+    {
+        Project_Restaurant1Entities db = new Project_Restaurant1Entities();
+        private int wait_id, tabl_id, status = 1, id_menu, myOrder_id;
+        public WaiterWindow()
+        {
+            InitializeComponent();
+
+            orderGrid.ItemsSource = GetMenu();
+            tablesGrid.ItemsSource = db.platens.ToList();
+
+            List<waiters> LWaiters = db.waiters.ToList();
+            waiterComboBox.ItemsSource = LWaiters;
+
+            List<int> persons = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
+            personComboBox.ItemsSource = persons;
+        }
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        private class MenuTable
+        {
+            public int id { get; set; }
+            public string type_dish { get; set; }
+            public string name { get; set; }
+            public int size { get; set; }
+            public string unit_measurement { get; set; }
+            public int price { get; set; }
+        }
+        List<MenuTable> GetMenu()
+        {
+            var menu = (from menu_item in db.menu
+                        join type_item in db.type_dish on menu_item.type_dish_id equals type_item.id
+                        join unit_item in db.units_of_measurement on menu_item.unit_of_measurement_id equals unit_item.id
+                        select new MenuTable
+                        {
+                            id = menu_item.id,
+                            size = menu_item.size,
+                            name = menu_item.dish_name,
+                            type_dish = type_item.type,
+                            unit_measurement = unit_item.name,
+                            price = menu_item.price
+                        }).Distinct();
+            return menu.OrderBy(x => x.type_dish).ToList();
+        }
+        private void ChooseDish_Click(object sender, RoutedEventArgs e)
+        {
+            id_menu = (orderGrid.SelectedItem as MenuTable).id;
+            MessageBox.Show(Convert.ToString(id_menu));
+            int myCount = 1;
+            myOrder_id = (from m in db.orders select m.id).ToList().Last();
+            checks item = new checks()
+            {
+                order_id = myOrder_id,
+                menu_id = id_menu,
+                count = myCount
+            };
+            db.checks.Add(item);
+            db.SaveChanges();
+
+        }
+        //update grid check
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            checksGrid.ItemsSource = GetCheck();
+        }
+        private void WaiterComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            wait_id = Convert.ToInt32(waiterComboBox.SelectedValue);
+        }
+        private void MakeOrder_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime myTime = DateTime.Now.ToLocalTime();
+            orders item = new orders()
+            {
+                time = myTime,
+                status_id = status,
+                table_id = tabl_id,
+                waiter_id = wait_id
+            };
+            db.orders.Add(item);
+            db.SaveChanges();
+        }
+        private void PersonsComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string table;
+            int person = Convert.ToInt32(personComboBox.SelectedItem);
+            if (person == 1)
+                table = (db.platens.
+                    Where(x => x.people_amount >= 2).
+                    Select(x => x.id).FirstOrDefault()).ToString();
+            else
+                table = (db.platens.
+                    Where(x => x.people_amount == person || x.people_amount == (person + 1)).
+                    Select(x => x.id).FirstOrDefault()).ToString();
+            tabl_id = Convert.ToInt32(table);
+        }
+        //tables add
+        private void AddTable_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlaten platenWindow = new AddPlaten();
+            platenWindow.ShowDialog();
+            tablesGrid.ItemsSource = db.platens.ToList();
+        }
+        //tables delete
+        private void deleteTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення столика?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (tablesGrid.SelectedItem as platens).id;
+                var deleteTable = db.platens.Where(m => m.id == id).Single();
+                db.platens.Remove(deleteTable);
+                db.SaveChanges();
+                tablesGrid.ItemsSource = db.platens.ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //tables update
+        private void updateTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            platens table = (tablesGrid.SelectedItem as platens);
+            platens thisTable = db.getPlatenInfo(table.id).Single();
+            thisTable.number = table.number;
+            thisTable.people_amount = table.people_amount;
+            db.SaveChanges();
+            tablesGrid.ItemsSource = db.platens.ToList();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+        private class CheckTable
+        {
+            public int id { get; set; }
+            public int id_table { get; set; }
+            public string waiter_name { get; set; }
+            public string dishname { get; set; }
+            public int size { get; set; }
+            public string unit_measurement { get; set; }
+            public int price { get; set; }
+            public int count { get; set; }
+            public int ToPay { get; set; }
+        }
+        List<CheckTable> GetCheck()
+        {
+            var check = (from check_item in db.checks
+                         join menu_item in db.menu on check_item.menu_id equals menu_item.id
+                         join order_item in db.orders on check_item.order_id equals order_item.id
+                         join waiter_item in db.waiters on order_item.waiter_id equals waiter_item.id
+                         join platen_item in db.platens on order_item.table_id equals platen_item.id
+                         join unit_item in db.units_of_measurement on menu_item.unit_of_measurement_id equals unit_item.id
+                         where check_item.order_id == myOrder_id
+                         select new CheckTable
+                         {
+                             id = check_item.id,
+                             id_table = platen_item.number,
+                             waiter_name = waiter_item.name,
+                             dishname = menu_item.dish_name,
+                             size = menu_item.size,
+                             unit_measurement = unit_item.name,
+                             price = menu_item.price,
+                             count = check_item.count,
+                             ToPay = menu_item.price * check_item.count
+                         }).Distinct();
+
+            return check.ToList();
+        }
+        //check delete
+        private void deleteCheckBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення замовлення у чеку?");
+            if (confWindow.ShowDialog() == true)
+            {
+
+                int id = (checksGrid.SelectedItem as CheckTable).id;
+                var deleteCheck = db.checks.Where(m => m.id == id).Single();
+                db.checks.Remove(deleteCheck);
+                db.SaveChanges();
+                checksGrid.ItemsSource = GetCheck();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //check update
+        private void updateCheckBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CheckTable item = (checksGrid.SelectedItem as CheckTable);
+            checks item1 = db.checks.First(c => c.id == item.id);
+            item1.count = item.count;
+            menu item4 = db.menu.First(c => c.id == item1.menu_id);
+            item4.price = item.price;
+            item4.size = item.size;
+            item4.unit_of_measurement_id = db.units_of_measurement.First(c => c.name == item.unit_measurement).id;
+            item4.dish_name = item.dishname;
+            orders item2 = db.orders.First(c => c.id == item1.order_id);
+            item2.waiter_id = db.waiters.First(c => c.name == item.waiter_name).id;
+            item2.table_id = db.platens.First(c => c.number == item.id_table).id;
+            db.SaveChanges();
+            checksGrid.ItemsSource = GetCheck();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+    }
+}

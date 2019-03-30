@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Project_Restaurant1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Project_Restaurant1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="checks">
           <Key>
             <PropertyRef Name="id" />
@@ -392,6 +392,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="getPlatenInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="platenId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getProviderInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="providerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getStatusInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="statusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getTypeDishInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="typedishId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getWaiterInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="waiterId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Хранилище Project_Restaurant1ModelContainer">
           <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="content_order_ingredients" EntityType="Self.content_order_ingredients" Schema="dbo" store:Type="Tables" />
@@ -491,8 +506,7 @@
             <End Role="shipment" EntitySet="shipment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Project_Restaurant1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1021,7 +1035,61 @@
             <End Role="units_of_measurement" EntitySet="units_of_measurement" />
             <End Role="storage_ingredient" EntitySet="storage_ingredient" />
           </AssociationSet>
+          <FunctionImport Name="getStorageInfo" ReturnType="Collection(Project_Restaurant1Model.getStorageInfo_Result)">
+          <Parameter Name="stId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getWaiterInfo" EntitySet="waiters" ReturnType="Collection(Project_Restaurant1Model.waiters)">
+          <Parameter Name="waiterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getStatusInfo" EntitySet="statuses" ReturnType="Collection(Project_Restaurant1Model.statuses)">
+          <Parameter Name="statusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getTypeDishInfo" EntitySet="type_dish" ReturnType="Collection(Project_Restaurant1Model.type_dish)">
+          <Parameter Name="typedishId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getProviderInfo" EntitySet="providers" ReturnType="Collection(Project_Restaurant1Model.providers)">
+          <Parameter Name="providerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getStorageItemInfo" EntitySet="storage_ingredient" ReturnType="Collection(Project_Restaurant1Model.storage_ingredient)">
+            <Parameter Name="storageItemId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPlatenInfo" EntitySet="platens" ReturnType="Collection(Project_Restaurant1Model.platens)">
+            <Parameter Name="platenId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="getStorageInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="count" Nullable="false" />
+          <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+          <Property Type="Int32" Name="ingredient_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getWaiterInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getStatusInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getTypeDishInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getProviderInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getStorageItemInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="count" Nullable="false" />
+          <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+          <Property Type="Int32" Name="ingredient_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getPlatenInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="number" Nullable="false" />
+          <Property Type="Int32" Name="people_amount" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1192,6 +1260,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getWaiterInfo" FunctionName="Хранилище Project_Restaurant1Model.getWaiterInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getStatusInfo" FunctionName="Хранилище Project_Restaurant1Model.getStatusInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getTypeDishInfo" FunctionName="Хранилище Project_Restaurant1Model.getTypeDishInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getProviderInfo" FunctionName="Хранилище Project_Restaurant1Model.getProviderInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getPlatenInfo" FunctionName="Хранилище Project_Restaurant1Model.getPlatenInfo">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

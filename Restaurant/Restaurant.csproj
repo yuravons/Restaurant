@@ -64,8 +64,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\AddStatus.xaml.cs">
+      <DependentUpon>AddStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddTypeDish.xaml.cs">
+      <DependentUpon>AddTypeDish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddWaiter.xaml.cs">
+      <DependentUpon>AddWaiter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="checks.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmReadiness.xaml.cs">
+      <DependentUpon>ConfirmReadiness.xaml</DependentUpon>
     </Compile>
     <Compile Include="content_order_ingredients.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
@@ -73,8 +88,32 @@
     <Compile Include="cooking.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
     </Compile>
+    <Compile Include="getPlatenInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getProviderInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getStatusInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getStorageInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getStorageItemInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getTypeDishInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getWaiterInfo_Result.cs">
+      <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
     <Compile Include="ingredients.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginScreen.xaml.cs">
+      <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="menu.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
@@ -90,6 +129,18 @@
     </Compile>
     <Compile Include="providers.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\AddOrderIngredient.xaml.cs">
+      <DependentUpon>AddOrderIngredient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\AddProvider.xaml.cs">
+      <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\AddStorageItem.xaml.cs">
+      <DependentUpon>AddStorageItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\ProviderWindow.xaml.cs">
+      <DependentUpon>ProviderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="recipes.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
@@ -130,12 +181,36 @@
     <Compile Include="waiters.cs">
       <DependentUpon>Restaurant.tt</DependentUpon>
     </Compile>
-    <Compile Include="Waiter\AddMenu.xaml.cs">
-      <DependentUpon>AddMenu.xaml</DependentUpon>
+    <Compile Include="Waiter\AddPlaten.xaml.cs">
+      <DependentUpon>AddPlaten.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Waiter\AddOrder.xaml.cs">
-      <DependentUpon>AddOrder.xaml</DependentUpon>
+    <Compile Include="Waiter\WaiterWindow.xaml.cs">
+      <DependentUpon>WaiterWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Admin\AddStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AddTypeDish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AddWaiter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmReadiness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,11 +223,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Waiter\AddMenu.xaml">
+    <Page Include="Provider\AddOrderIngredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Waiter\AddOrder.xaml">
+    <Page Include="Provider\AddProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Provider\AddStorageItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Provider\ProviderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Waiter\AddPlaten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Waiter\WaiterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,5 +299,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
