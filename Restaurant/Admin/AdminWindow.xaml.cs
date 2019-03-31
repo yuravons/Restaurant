@@ -28,20 +28,6 @@ namespace Restaurant.Admin
             statusesGrid.ItemsSource = db.statuses.ToList();
             waitersGrid.ItemsSource = db.waiters.ToList();
         }
-        private void LogOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
-            if (confWindow.ShowDialog() == true)
-            {
-                LoginScreen login = new LoginScreen();
-                login.Show();
-                this.Close();
-            }
-            else
-            {
-                confWindow.Hide();
-            }
-        }
 
         //type_dish add
         private void AddTypeDish_Click(object sender, RoutedEventArgs e)
@@ -146,6 +132,33 @@ namespace Restaurant.Admin
             db.SaveChanges();
             waitersGrid.ItemsSource = db.waiters.ToList();
             MessageBox.Show("Зміни успішно збережено");
+        }
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            LoginScreen window = new LoginScreen();
+            window.ShowDialog();
+            this.Close();
+        }
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
+        }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
         }
     }
 }

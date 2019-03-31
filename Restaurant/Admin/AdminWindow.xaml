@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Admin"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="823.077">
+        Title="Вікно адміністатора" Height="450" Width="823.077">
     <Grid>
-        <TabControl x:Name="adminMenu" Margin="10,20,-1,10">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TabControl FontFamily="Corbel" FontSize="14" x:Name="adminMenu" Margin="10,30,-1,10">
             <TabItem x:Name="types_dishes">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -16,7 +22,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,57,0,0">
-                    <Button x:Name="AddTypeDish" Margin="0,-49,568,317" Content="Додати тип страви" Click="AddTypeDish_Click"/>
+                    <Button x:Name="AddTypeDish" Margin="0,-49,568,292" Content="Додати тип страви" Click="AddTypeDish_Click"/>
                     <DataGrid x:Name="typesDishesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Тип страви" Binding="{Binding type}"/>
@@ -28,9 +34,9 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateTypeDishBtn" Content="Зберегти" Click="updateTypeDishBtn_Click"/>
-                                            <Button ToolTip="Натисніть, щоб видалити статус" x:Name="deleteTypeBtn" Content="Видалити" Click="deleteTypeBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити статус" x:Name="deleteTypeBtn" Content="Видалити" Click="deleteTypeBtn_Click"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -47,7 +53,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,57,0,0">
-                    <Button x:Name="AddStatus" Margin="0,-49,568,317" Content="Додати статус" Click="AddStatus_Click"/>
+                    <Button x:Name="AddStatus" Margin="0,-49,568,292" Content="Додати статус" Click="AddStatus_Click"/>
                     <DataGrid x:Name="statusesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Статус" Binding="{Binding name}"/>
@@ -59,9 +65,9 @@
                                 </DataGridTemplateColumn.HeaderTemplate>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateStatusBtn" Content="Зберегти" Click="updateStatusBtn_Click"/>
-                                            <Button ToolTip="Натисніть, щоб видалити статус" x:Name="deleteStatusBtn" Content="Видалити" Click="deleteStatusBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити статус" x:Name="deleteStatusBtn" Content="Видалити" Click="deleteStatusBtn_Click"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -100,20 +106,19 @@
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateWaiterBtn" Content="Зберегти" Click="updateWaiterBtn_Click"/>
-                                                <Button ToolTip="Натисніть, щоб видалити користувача" x:Name="deleteWaiterBtn" Content="Видалити" Click="deleteWaiterBtn_Click"/>
+                                                <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити користувача" x:Name="deleteWaiterBtn" Content="Видалити" Click="deleteWaiterBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button x:Name="AddWaiterBtn" ToolTip="Натисніть, щоб додати нового офіціанта" Margin="0,-49,163,316" Content="Додати офіціанта" Click="AddWaiterBtn_Click"/>
+                        <Button x:Name="AddWaiterBtn" ToolTip="Натисніть, щоб додати нового офіціанта" Margin="0,-49,163,292" Content="Додати офіціанта" Click="AddWaiterBtn_Click"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
-        <Button x:Name="logOutButton" Margin="726,20,0,366"  Content="Вийти" Click="LogOutButton_Click" />
     </Grid>
 </Window>

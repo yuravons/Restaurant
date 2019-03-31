@@ -75,5 +75,28 @@ namespace Restaurant.Provider
         {
             pr_id = Convert.ToInt32(providerComboBox.SelectedValue);
         }
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            LoginScreen window = new LoginScreen();
+            window.ShowDialog();
+            this.Close();
+        }
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
+        }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+                this.Close();
+            else
+                confWindow.Hide();
+        }
     }
 }

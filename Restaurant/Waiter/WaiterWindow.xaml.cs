@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Restaurant.Admin;
+using Restaurant.Provider;
 
 namespace Restaurant.Waiter
 {
@@ -231,6 +233,29 @@ namespace Restaurant.Waiter
             db.SaveChanges();
             checksGrid.ItemsSource = GetCheck();
             MessageBox.Show("Зміни успішно збережено");
+        }
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            LoginScreen window = new LoginScreen();
+            window.ShowDialog();
+            this.Close();
+        }
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
+        }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+                this.Close();
+            else
+                confWindow.Hide();
         }
     }
 }

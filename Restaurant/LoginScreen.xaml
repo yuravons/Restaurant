@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-Title="LoginScreen" Height="300" Width="300" Background="#1dc0ff">
+        Title="Логінізація" Height="300" Width="300" Background="#1dc0ff">
     <Grid>
         <StackPanel>
-            <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
+            <Label FontFamily="Corbel" Content="Логін" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
             <Separator></Separator>
-            <Label Content="Username" Foreground="White"/>
-            <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Label Content="Password" Foreground="White"/>
-            <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="BtnSubmit_Click"/>
+            <Label FontFamily="Corbel" FontSize="14" Content="Ідентифікатор користувача" Foreground="White"/>
+            <TextBox FontFamily="Corbel" Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <Label FontFamily="Corbel" FontSize="14" Content="Пароль" Foreground="White"/>
+            <PasswordBox FontFamily="Corbel" Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <Button FontFamily="Corbel" Name="btnSubmit" Content="Підтвердити" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="BtnSubmit_Click"/>
         </StackPanel>
     </Grid>
 </Window>

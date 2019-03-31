@@ -44,3 +44,5 @@ C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\Provider\AddStorageItem
 C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\Provider\AddStorageItem.baml
 C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\Waiter\AddPlaten.g.cs
 C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\Waiter\AddPlaten.baml
+C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\AboutProgram.g.cs
+C:\Users\HP\source\repos\Restaurant\Restaurant\obj\Debug\AboutProgram.baml

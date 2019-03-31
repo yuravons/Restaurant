@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Provider"
         mc:Ignorable="d"
-        Title="AddStorageItem" Height="252" Width="615.517">
-    <Grid Margin="0,0,2,17">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="147*"/>
-            <RowDefinition Height="43*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,30" TextWrapping="Wrap" Text="Інгредієнт" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="storageNameToAdd" HorizontalAlignment="Left" Margin="196,66,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="355,66,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
-        <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="355,87,0,0" VerticalAlignment="Top" Width="135" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="UnitComboBox_SelectionChanged"/>
-        <Button x:Name="addStorageItemBtn" Content="Додати" HorizontalAlignment="Left" Margin="246,126,0,0" VerticalAlignment="Top" Width="116" Height="22" Click="AddStorageItemBtn_Click" />
-        <TextBox x:Name="StorageItemNameTextBox" HorizontalAlignment="Left" Height="22" Margin="138,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
+        Title="Добавити інгредієнт на склад" Height="252" Width="615.517">
+    <Grid>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="256,47,250,0" TextWrapping="Wrap" Text=" Інгредієнт" VerticalAlignment="Top" FontSize="20" Width="102"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="storageNameToAdd" HorizontalAlignment="Left" Margin="191,83,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top" Height="16"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="389,83,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="65" Height="23"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="unitComboBox" HorizontalAlignment="Left" Margin="351,104,0,0" VerticalAlignment="Top" Width="135" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="UnitComboBox_SelectionChanged"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addStorageItemBtn" Content="Додати" HorizontalAlignment="Left" Margin="242,143,0,0" VerticalAlignment="Top" Width="116" Height="22" Click="AddStorageItemBtn_Click" />
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="StorageItemNameTextBox" HorizontalAlignment="Left" Height="22" Margin="134,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
     </Grid>
 </Window>

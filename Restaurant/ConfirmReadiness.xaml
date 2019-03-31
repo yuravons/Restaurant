@@ -11,10 +11,10 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Name="messageTextBox" Text="{Binding message}"></TextBlock>
+        <TextBlock FontFamily="Corbel" FontSize="14" Name="messageTextBox" Text="{Binding message}"></TextBlock>
         <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0">
-            <Button IsDefault="True"  MinWidth="60" Margin="0,0,10,0" Content="Так" Click="Button_Click"/>
-            <Button IsCancel="True" MinWidth="60" Content="Відмінити"/>
+            <Button FontFamily="Corbel" FontSize="14" IsDefault="True"  MinWidth="60" Margin="0,0,10,0" Content="Так" Click="Button_Click"/>
+            <Button FontFamily="Corbel" FontSize="14" IsCancel="True" MinWidth="60" Content="Відмінити"/>
         </WrapPanel>
     </Grid>
 </Window>

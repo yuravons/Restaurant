@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Restaurant.Provider;
 using Restaurant.Waiter;
+using Restaurant.Admin;
 
 namespace Restaurant
 {
@@ -34,6 +35,12 @@ namespace Restaurant
             {
                 ProviderWindow prWindow = new ProviderWindow();
                 prWindow.Show();
+                this.Close();
+            }
+            if (user != null && user.login == "admin")
+            {
+                AdminWindow adWindow = new AdminWindow();
+                adWindow.Show();
                 this.Close();
             }
             else if (user != null && user.login == "waiter")

@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Waiter"
         mc:Ignorable="d"
-       Title="WaiterWindow" Height="585.354" Width="834">
+       Title="Вікно офіціанта" Height="585.354" Width="834">
     <Grid>
-        <TabControl x:Name="WaiterMenu" Margin="10,20,0,10" HorizontalAlignment="Left" Width="806">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TabControl FontFamily="Corbel" FontSize="14" x:Name="WaiterMenu" Margin="10,30,0,10" HorizontalAlignment="Left" Width="806">
             <TabItem x:Name="orderTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -21,8 +27,7 @@
                         <ComboBox x:Name="waiterComboBox" HorizontalAlignment="Left" Margin="8,-28,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="WaiterComboBox_OnSelectionChanged"/>
                         <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="195,-49,0,0" TextWrapping="Wrap" Text="Кількість персон" VerticalAlignment="Top" Width="96" Height="23"/>
                         <ComboBox x:Name="personComboBox" HorizontalAlignment="Left" Margin="173,-28,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="PersonsComboBox_OnSelectionChanged"/>
-
-                        <Button x:Name="MakeOrder" Margin="543,-49,18,448" Content="Зробити замовлення" Click="MakeOrder_Click"/>
+                        <Button x:Name="MakeOrder" Margin="549,-48,12,427" Content="Зробити замовлення" Click="MakeOrder_Click"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -76,7 +81,7 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,6,0,0">
-                        <Button x:Name="refresh" Margin="0,0,561,448" Content="Оновити" Click="Refresh_Click" />
+                        <Button x:Name="refresh" Margin="0,0,561,437" Content="Оновити" Click="Refresh_Click" />
 
                         <DataGrid x:Name="checksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,41,0,0">
                             <DataGrid.Columns>
@@ -116,7 +121,7 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,6,0,0">
-                        <Button x:Name="addTable" Content="Додати столик" Width="239" Margin="0,0,561,450" Click="AddTable_Click" />
+                        <Button x:Name="addTable" Content="Додати столик" Width="239" Margin="0,0,561,439" Click="AddTable_Click" />
                         <DataGrid x:Name="tablesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,39,0,10">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Номер столу" Binding="{Binding number}"/>
@@ -129,9 +134,9 @@
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateTableBtn" Content="Зберегти" Click="updateTableBtn_Click"/>
-                                                <Button ToolTip="Натисніть, щоб видалити столик" x:Name="deleteTableBtn" Content="Видалити" Click="deleteTableBtn_Click"/>
+                                                <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити столик" x:Name="deleteTableBtn" Content="Видалити" Click="deleteTableBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -141,8 +146,6 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-
         </TabControl>
-        <Button x:Name="logOutButton" Margin="716,20,10,502"  Content="Вийти" Click="LogOutButton_Click" />
     </Grid>
 </Window>

@@ -5,32 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Provider"
         mc:Ignorable="d"
-        Title="Додати нове замовлення інгредієнтів" Height="237" Width="736.218">
-    <Grid Margin="0,0,2,17">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="0*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="278,26,0,0" TextWrapping="Wrap" Text="Замовлення інгредієнту" VerticalAlignment="Top" FontSize="20" Height="27" Width="218"/>
-        <TextBlock x:Name="recipeNameToAdd" HorizontalAlignment="Left" Margin="218,71,0,0" TextWrapping="Wrap" Text="Інгредієнт" VerticalAlignment="Top" Height="29" Width="80" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.184"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="48,73,0,0" TextWrapping="Wrap" Text="Постачальник" VerticalAlignment="Top" Width="84" Height="23"/>
-        <TextBox x:Name="countTextBox" HorizontalAlignment="Left" Height="22" Margin="349,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="363,73,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top" Height="23" Width="74"/>
-        <ComboBox x:Name="providerComboBox" HorizontalAlignment="Left" Margin="34,89,0,0" VerticalAlignment="Top" Width="98" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="ProviderComboBox_SelectionChanged"/>
-        <Button x:Name="addOrderBtn" Content="Додати" HorizontalAlignment="Left" Margin="312,136,0,0" VerticalAlignment="Top" Width="163" Height="22" Click="AddOrderBtn_Click"/>
-        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="456,73,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
-        <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="456,89,0,0" VerticalAlignment="Top" Width="135" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="UnitComboBox_SelectionChanged"/>
-        <ComboBox x:Name="ingredientComboBox" HorizontalAlignment="Left" Margin="180,89,0,0" VerticalAlignment="Top" Width="136" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="24" SelectionChanged="IngredientComboBox_SelectionChanged"/>
-        <TextBlock x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="652,73,0,0" TextWrapping="Wrap" Text="Ціна" VerticalAlignment="Top" Height="23" Width="52"/>
-        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="22" Margin="634,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        Title="Добавити нове замовлення інгредієнтів" Height="237" Width="736.218">
+    <Grid Margin="0,0,0,0">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Left" Margin="280,42,0,0" TextWrapping="Wrap" Text="Замовлення інгредієнту" VerticalAlignment="Top" FontSize="20" Height="27" Width="218"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="recipeNameToAdd" HorizontalAlignment="Left" Margin="220,87,0,0" TextWrapping="Wrap" Text="Інгредієнт" VerticalAlignment="Top" Height="29" Width="80" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock2" HorizontalAlignment="Left" Margin="36,89,0,0" TextWrapping="Wrap" Text="Постачальник" VerticalAlignment="Top" Width="98" Height="23"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="countTextBox" HorizontalAlignment="Left" Height="22" Margin="351,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock3" HorizontalAlignment="Left" Margin="351,89,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.178,0.567"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="providerComboBox" HorizontalAlignment="Left" Margin="36,107,0,0" VerticalAlignment="Top" Width="98" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="ProviderComboBox_SelectionChanged"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addOrderBtn" Content="Додати" HorizontalAlignment="Left" Margin="314,152,0,0" VerticalAlignment="Top" Width="163" Height="22" Click="AddOrderBtn_Click"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="494,89,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="58" Height="23"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="unitComboBox" HorizontalAlignment="Left" Margin="458,107,0,0" VerticalAlignment="Top" Width="135" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="UnitComboBox_SelectionChanged"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="ingredientComboBox" HorizontalAlignment="Left" Margin="182,107,0,0" VerticalAlignment="Top" Width="136" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="20" SelectionChanged="IngredientComboBox_SelectionChanged"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="654,89,0,0" TextWrapping="Wrap" Text="Ціна" VerticalAlignment="Top" Height="23" Width="52"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="priceTextBox" HorizontalAlignment="Left" Height="22" Margin="636,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
     </Grid>
 </Window>

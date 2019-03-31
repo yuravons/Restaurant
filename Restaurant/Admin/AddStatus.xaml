@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Admin"
         mc:Ignorable="d"
-        Title="AddStatus" Height="252" Width="615">
+        Title="Добавити статус виконання" Height="252" Width="615">
     <Grid Margin="0,0,2,17">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="147*"/>
-            <RowDefinition Height="43*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,30" TextWrapping="Wrap" Text="Статус" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="statusToAdd" HorizontalAlignment="Left" Margin="158,74,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
-        <Button x:Name="addStatusBtn" Content="Додати" HorizontalAlignment="Left" Margin="278,126,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="AddStatusBtn_Click"/>
-        <TextBox x:Name="statusTextBox" HorizontalAlignment="Left" Height="22" Margin="222,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="274,46,258,0" TextWrapping="Wrap" Text=" Статус" VerticalAlignment="Top" FontSize="20" Width="73" />
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="statusToAdd" HorizontalAlignment="Left" Margin="158,86,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addStatusBtn" Content="Додати" HorizontalAlignment="Left" Margin="263,138,0,0" VerticalAlignment="Top" Width="79" Height="22" Click="AddStatusBtn_Click"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="statusTextBox" HorizontalAlignment="Left" Height="22" Margin="222,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
     </Grid>
 </Window>

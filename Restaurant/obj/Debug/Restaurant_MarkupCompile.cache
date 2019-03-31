@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\HP\source\repos\Restaurant\Restaurant\App.xaml
-13-38882612
+14-1803065430
 2-1335688340
-44-1469416860
+45501597082
 18-2122907408
-Admin\AddStatus.xaml;Admin\AddTypeDish.xaml;Admin\AddWaiter.xaml;Admin\AdminWindow.xaml;ConfirmReadiness.xaml;LoginScreen.xaml;MainWindow.xaml;Provider\AddOrderIngredient.xaml;Provider\AddProvider.xaml;Provider\AddStorageItem.xaml;Provider\ProviderWindow.xaml;Waiter\AddPlaten.xaml;Waiter\WaiterWindow.xaml;
+AboutProgram.xaml;Admin\AddStatus.xaml;Admin\AddTypeDish.xaml;Admin\AddWaiter.xaml;Admin\AdminWindow.xaml;ConfirmReadiness.xaml;LoginScreen.xaml;MainWindow.xaml;Provider\AddOrderIngredient.xaml;Provider\AddProvider.xaml;Provider\AddStorageItem.xaml;Provider\ProviderWindow.xaml;Waiter\AddPlaten.xaml;Waiter\WaiterWindow.xaml;
 
 False
 

@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Admin"
         mc:Ignorable="d"
-        Title="AddTypeDish" Height="252" Width="615">
+        Title="Добавити тип страви" Height="252" Width="615">
     <Grid Margin="0,0,2,17">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="147*"/>
-            <RowDefinition Height="43*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,30" TextWrapping="Wrap" Text="Тип страви" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="typeDishToAdd" HorizontalAlignment="Left" Margin="158,74,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
-        <Button x:Name="addTypeDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="278,126,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="AddTypeDishBtn_Click"/>
-        <TextBox x:Name="typeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="222,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="254,43,229,0" TextWrapping="Wrap" Text=" Тип страви" VerticalAlignment="Top" FontSize="20" Width="122"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="typeDishToAdd" HorizontalAlignment="Left" Margin="158,87,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addTypeDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="278,139,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="AddTypeDishBtn_Click"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="typeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="222,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
     </Grid>
 </Window>

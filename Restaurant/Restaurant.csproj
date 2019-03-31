@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutProgram.xaml.cs">
+      <DependentUpon>AboutProgram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddStatus.xaml.cs">
       <DependentUpon>AddStatus.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
     <Compile Include="Waiter\WaiterWindow.xaml.cs">
       <DependentUpon>WaiterWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AboutProgram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\AddStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
