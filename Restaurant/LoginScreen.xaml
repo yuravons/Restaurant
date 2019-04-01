@@ -14,7 +14,7 @@
             <TextBox FontFamily="Corbel" Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label FontFamily="Corbel" FontSize="14" Content="Пароль" Foreground="White"/>
             <PasswordBox FontFamily="Corbel" Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button FontFamily="Corbel" Name="btnSubmit" Content="Підтвердити" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="BtnSubmit_Click"/>
+            <Button FontFamily="Corbel" x:Name="btnSubmit" Content="Підтвердити" Margin="60 30" Background="#545d6a" Foreground="White" FontSize="18" Click="BtnSubmit_Click"/>
         </StackPanel>
     </Grid>
 </Window>

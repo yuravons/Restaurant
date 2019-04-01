@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,21 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Restaurant.Waiter;
-using Restaurant.Provider;
 
 namespace Restaurant
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для HelpProgram.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HelpProgram : Window
     {
-        public MainWindow()
+        public HelpProgram()
         {
             InitializeComponent();
+        }
+        public HelpProgram(string _str)
+        {
+            InitializeComponent();
+            textbox.Document.Blocks.Clear();
+            textbox.Document.Blocks.Add(new Paragraph(new Run(_str)));
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
