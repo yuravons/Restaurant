@@ -43,7 +43,9 @@ namespace Restaurant.Provider
         }
         private void Help_Item(object sender, RoutedEventArgs e)
         {
-
+            string Help = "1. Для додавання нового постачальника, введіть назву постачальника у поле та натисніть кнопку \"Додати\".\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
         }
         private void About_Item(object sender, RoutedEventArgs e)
         {

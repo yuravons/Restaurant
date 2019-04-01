@@ -26,7 +26,7 @@ namespace Restaurant
                            "Версія продукту 1.01\n\n" + 
                            "Ліцензія для:\n" + 
                            "Вонс Юрій\n" + 
-                           "Кузнєцова Анастасія\n\n\n" +
+                           "Кузнецова Анастасія\n\n\n" +
                            "Copyright © VonsYurii Restaurant 2019\n" +
                            "Всі права захищені.";
             textbox.Document.Blocks.Clear();

@@ -14,7 +14,7 @@
             <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
         </Menu>
         <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="254,43,229,0" TextWrapping="Wrap" Text=" Тип страви" VerticalAlignment="Top" FontSize="20" Width="122"/>
-        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="typeDishToAdd" HorizontalAlignment="Left" Margin="158,87,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="typeDishToAdd" HorizontalAlignment="Left" Margin="176,87,0,0" TextWrapping="Wrap" Text="Тип" VerticalAlignment="Top"/>
         <Button FontFamily="Corbel" FontSize="14" x:Name="addTypeDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="278,139,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="AddTypeDishBtn_Click"/>
         <TextBox FontFamily="Corbel" FontSize="14" x:Name="typeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="222,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
     </Grid>

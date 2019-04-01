@@ -83,7 +83,10 @@ namespace Restaurant.Provider
         }
         private void Help_Item(object sender, RoutedEventArgs e)
         {
-
+            string Help = "1. Для додавання нового замовлення інгредієнтів, виберіть постачальника, інгредієнт, одиницю вимірювання, введіть ціну та кількість даного інгредієнту " +
+                "та натисніть кнопку \"Додати\".\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
         }
         private void About_Item(object sender, RoutedEventArgs e)
         {

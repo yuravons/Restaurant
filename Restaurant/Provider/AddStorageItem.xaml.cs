@@ -58,7 +58,9 @@ namespace Restaurant.Provider
         }
         private void Help_Item(object sender, RoutedEventArgs e)
         {
-
+            string Help = "1. Для додавання нового інгредієнту на склад, введіть назву у поле, виберіть одиницю вимірювання та натисніть кнопку \"Додати\".\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
         }
         private void About_Item(object sender, RoutedEventArgs e)
         {
