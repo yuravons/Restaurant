@@ -42,6 +42,7 @@ namespace Restaurant.Provider
 
         private void IngredientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             ing_id = Convert.ToInt32(ingredientComboBox.SelectedValue);
         }
 

@@ -301,6 +301,7 @@
       <DependentUpon>Restaurant.edmx</DependentUpon>
       <LastGenOutput>Restaurant.cs</LastGenOutput>
     </Content>
+    <Resource Include="Waiter\1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

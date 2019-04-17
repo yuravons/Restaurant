@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Логінізація" Height="300" Width="300" Background="#1dc0ff">
+        Title="Логінізація" Height="300" Width="300" Background="#1dc0ff" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <Label FontFamily="Corbel" Content="Логін" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>

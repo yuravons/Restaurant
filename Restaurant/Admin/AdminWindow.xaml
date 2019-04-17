@@ -49,7 +49,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Ellipse Height="10" Width="10" Fill="Aqua" />
-                        <TextBlock Margin="3"><Run Text="Статус"/></TextBlock>
+                        <TextBlock Margin="3"><Run Text="Статуси"/></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,57,0,0">

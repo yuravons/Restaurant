@@ -37,7 +37,7 @@ namespace Restaurant
                 prWindow.Show();
                 this.Close();
             }
-            if (user != null && user.login == "admin")
+            else if (user != null && user.login == "admin")
             {
                 AdminWindow adWindow = new AdminWindow();
                 adWindow.Show();

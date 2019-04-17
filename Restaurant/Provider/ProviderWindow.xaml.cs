@@ -100,6 +100,9 @@ namespace Restaurant.Provider
             if (confWindow.ShowDialog() == true)
             {
                 int id = (ordIngrGrid.SelectedItem as OrderIngredientTable).id;
+                var deleteContent = db.content_order_ingredients.Where(m => m.order_ingredients_id == id).Single();
+                db.content_order_ingredients.Remove(deleteContent);
+                db.SaveChanges();
                 var deleteOrderIngredient = db.order_ingredients.Where(m => m.id == id).Single();
                 db.order_ingredients.Remove(deleteOrderIngredient);
                 db.SaveChanges();
