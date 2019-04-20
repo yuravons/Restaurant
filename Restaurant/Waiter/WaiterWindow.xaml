@@ -29,7 +29,7 @@
                         <ComboBox x:Name="personComboBox" HorizontalAlignment="Left" Margin="173,-28,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="PersonsComboBox_OnSelectionChanged"/>
                         <TextBlock x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="346,-49,0,0" TextWrapping="Wrap" Text="      Номер столика" VerticalAlignment="Top" Width="135" Height="23"/>
                         <ComboBox x:Name="numberComboBox" HorizontalAlignment="Left" Margin="346,-28,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="NumberComboBox_OnSelectionChanged"/>
-                        <Button x:Name="MakeOrder" Margin="549,-48,12,427" Content="Зробити замовлення" Click="MakeOrder_Click"/>
+                        <Button x:Name="MakeOrder" Margin="549,-48,12,427" Content="Забронювати столик" Click="MakeOrder_Click"/>
                         <Image Source="../Waiter/1.jpg"/>
                     </Grid>
                 </TabItem.Content>
